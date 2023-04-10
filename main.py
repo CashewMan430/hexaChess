@@ -1,5 +1,5 @@
 import tkinter as tk
-
+// Assigns piece variables to numbers //
 # Pawn = 1
 # Kight = 2
 # Bishop = 3
@@ -8,6 +8,7 @@ import tkinter as tk
 # Camel1 = 6
 # Camel2 = 8
 # King = 7
+// sets up the board //
 row0 =    [0,0,0,0,0]
 row1 =   [0,0,0,0,0,0]
 row2 =  [0,0,0,0,0,0,0]
@@ -18,7 +19,7 @@ row6 =  [2,0,0,0,0,0,2]
 row7 =   [1,3,1,1,3,1]
 row8 =    [6,5,7,4,8]
 rowcolumn = [row0,row1,row2,row3,row4,row5,row6,row7,row8]
-
+// Prints the board //
 def printboard():
     print("      " + str(row0))
     print("     " + str(row1))
@@ -29,7 +30,7 @@ def printboard():
     print("   " + str(row6))
     print("     " + str(row7))
     print("      " + str(row8))
-
+// Gives Piece value to certain spots on the board of the start //
 def identifypiece(location):
     if  location == 1:
         return "pawn"
@@ -47,11 +48,11 @@ def identifypiece(location):
         return "king"
     elif location == 8:
         return "camel"    
-
+// Describes the conditions for capture //
 def capture():
     rowcolumn[(int(loc2[0])-1)][(int(loc2[1])-1)] = rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]
     rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)] = 0
-
+// Describes the conditions for moving pieces //
 def move():
     if rowcolumn[(int(loc2[0])-1)][(int(loc2[1])-1)] == 0:
         print("The " + str(identifypiece(rowcolumn[(int(loc2[0])-1)][(int(loc2[1])-1)])) + " at " + str(loc1) + " moved to " + str(loc2) + ".")
@@ -60,7 +61,7 @@ def move():
     else:
         print("The " + identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) + " at " + str(loc1) + " captured the " + identifypiece(rowcolumn[(int(loc2[0])-1)][(int(loc2[1])-1)]) + " at " + str(loc2))
         capture()
-        
+// Gives knight pieces the ability to move //        
 def knightmove(loc1a, loc1b, loc2a, loc2b):
     if loc1a == 4 and loc2a == 6:
         if int(loc1a) - int(loc2a) == -2:
@@ -131,7 +132,7 @@ def knightmove(loc1a, loc1b, loc2a, loc2b):
                 print("The knight can't move there!")
         else:
             print("The knight can't move there!")
-
+// Defines the king move //
 def kingmove(loc1a, loc1b, loc2a, loc2b):
     if loc1a < 5:
         if int(loc1a) - int(loc2a) == -1:
@@ -181,7 +182,7 @@ def kingmove(loc1a, loc1b, loc2a, loc2b):
                 move()
             else:
                 print("The king can't move there!")
-
+// Defines the conditions for queen moves //
 def queenmove(loc1a, loc1b, loc2a, loc2b):
     if loc1a == 1:
         if loc2a == loc1a:
@@ -342,7 +343,7 @@ def queenmove(loc1a, loc1b, loc2a, loc2b):
             if loc1b == loc2b:
                 move()
     
-
+// Plays through the game //
 while True:
 
     loc1 = str(input("What original location? "))
