@@ -40,7 +40,7 @@ def printboard():
 
 def identifypiece(location):
     if  location == 1:
-        return "pawn"
+        return "white pawn"
     elif location == 2:
         return "knight"
     elif location == 3:
@@ -1215,8 +1215,20 @@ while True:
         loc2 = str(input("What new location? "))
         loc2 = loc2.split(",")
         
+        if (int(loc2[0])) > 9 or (int(loc2[0])) < 1 or (int(loc2[1])) < 1 or len(rowcolumn[(int(loc2[0])-1)]) < (int(loc2[1])-1):
+            print("The coordinate " + str(loc2) + " is off the board!")
+            printboard()
+
         if identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "knight":
-            knightmove(loc1[0], loc1[1], loc2[0], loc2[1])
+            knightmove(int(loc1[0]), int(loc1[1]), int(loc2[0]), int(loc2[1]))
         if identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "king":
-            kingmove(loc1[0], loc1[1], loc2[0], loc2[1])
+            kingmove(int(loc1[0]), int(loc1[1]), int(loc2[0]), int(loc2[1]))
+        if identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "queen":
+            queenmove(int(loc1[0]), int(loc1[1]), int(loc2[0]), int(loc2[1]))
+        if identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "THE POPE":
+            popemove(int(loc1[0]), int(loc1[1]), int(loc2[0]), int(loc2[1]))
+        if identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "bishop":
+            bishopmove(int(loc1[0]), int(loc1[1]), int(loc2[0]), int(loc2[1]))
+        if identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "white pawn":
+            whitepawnmove(int(loc1[0]), int(loc1[1]), int(loc2[0]), int(loc2[1]))
         printboard()
