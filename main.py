@@ -1,13 +1,21 @@
 # Assigns piece variables to numbers 
 
 # Pawn = 1
-# Kight = 2
+# Knight = 2
 # Bishop = 3
 # Queen = 4
 # Chancellor = 5
 # Rock = 6
 # King = 7
 
+pawns = 0
+knights = 0
+bishops = 0
+queens = 0
+chancellors = 0
+rock = 0
+king = 0
+pieces = [pawns, knights, bishops, queens, chancellors, rock, king]
 # sets up the board
 
 row0 =    [0,0,0,0,0]
@@ -20,7 +28,7 @@ row6 =  [2,0,0,0,0,0,2]
 row7 =   [1,3,1,1,3,1]
 row8 =    [6,5,7,4,6]
 rowcolumn = [row0,row1,row2,row3,row4,row5,row6,row7,row8]
-
+weight = 0
 # Prints the board 
 
 def printboard():
@@ -37,7 +45,9 @@ def printboard():
 # Gives Piece value to certain spots on the board of the start
 
 def identifypiece(location):
-    if  location == 1:
+    if location == 0:
+        return "nothing"
+    elif  location == 1:
         return "white pawn"
     elif location == 2:
         return "knight"
@@ -68,8 +78,45 @@ def move():
     else:
         print("The " + identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) + " at " + str(loc1) + " captured the " + identifypiece(rowcolumn[(int(loc2[0])-1)][(int(loc2[1])-1)]) + " at " + str(loc2))
         capture()
+
+def count(x, y):
+    match identifypiece(rowcolumn[x][y]):
+        case "nothing":
+            return
+        case "white pawn":
+            return 1
+        case "knight":
+            return 2
+        case "bishop":
+            return 3
+        case "queen":
+            return 7
+        case "THE POPE":
+            return 9
+        case "Rock":
+            return 0
+        case "King":
+            return 5
+def weight(x, y):
+    match identifypiece(rowcolumn[x][y]):
+        case "nothing":
+            return 0
+        case "white pawn":
+            return 1
+        case "knight":
+            return 3
+        case "bishop":
+            return 3
+        case "queen":
+            return 7
+        case "THE POPE":
+            return 9
+        case "Rock":
+            return 0
+        case "King":
+            return 5
         
-# Defines the conditions for night moves
+# Defines the conditions for knight moves
 
 def knightmove(loc1a, loc1b, loc2a, loc2b):
     for i in range(1):
@@ -883,6 +930,11 @@ while True:
 
     loc1 = str(input("What original location? "))
     loc1 = loc1.split(",")
+    if loc1 == "Game Review":
+        for i in range(len(rowcolumn)):
+            for j in range(len(rowcolumn[i])):
+                weight += weight(i, j)
+                pieces[count(i, j)] += 1
 
     if (int(loc1[0])) > 9 or (int(loc1[0])) < 1 or (int(loc1[1])) < 1 or len(rowcolumn[(int(loc1[0])-1)]) < (int(loc1[1])-1):
         print("The coordinate " + str(loc1) + " is off the board!")
@@ -905,16 +957,18 @@ while True:
 
         if identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "knight":
             knightmove(int(loc1[0]), int(loc1[1]), int(loc2[0]), int(loc2[1]))
-        if identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "king":
+        elif identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "king":
             kingmove(int(loc1[0]), int(loc1[1]), int(loc2[0]), int(loc2[1]))
-        if identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "queen":
+        elif identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "queen":
             queenmove(int(loc1[0]), int(loc1[1]), int(loc2[0]), int(loc2[1]))
-        if identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "THE POPE":
+        elif identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "THE POPE":
             popemove(int(loc1[0]), int(loc1[1]), int(loc2[0]), int(loc2[1]))
-        if identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "bishop":
+        elif identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "bishop":
             bishopmove(int(loc1[0]), int(loc1[1]), int(loc2[0]), int(loc2[1]))
-        if identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "white pawn":
+        elif identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "white pawn":
             whitepawnmove(int(loc1[0]), int(loc1[1]), int(loc2[0]), int(loc2[1]))
-        if identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "Rock":
+        elif identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "Rock":
             print("That's a rock. It can't move.")
+        elif identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "nothing":
+            print("There is no piece there!")
         printboard()
