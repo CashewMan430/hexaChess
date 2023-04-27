@@ -56,7 +56,7 @@ def identifypiece(location):
     elif location == 4:
         return "queen"
     elif location == 5:
-        return "THE POPE"
+        return "pope"
     elif location == 6:
         return "Rock"
     elif location == 7:
@@ -79,6 +79,8 @@ def move():
         print("The " + identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) + " at " + str(loc1) + " captured the " + identifypiece(rowcolumn[(int(loc2[0])-1)][(int(loc2[1])-1)]) + " at " + str(loc2))
         capture()
 
+
+
 def count(x, y):
     match identifypiece(rowcolumn[x][y]):
         case "nothing":
@@ -91,13 +93,23 @@ def count(x, y):
             return 3
         case "queen":
             return 7
-        case "THE POPE":
+        case "pope":
             return 9
         case "Rock":
             return 0
         case "King":
             return 5
-def weight(x, y):
+        
+def printpieces():
+    print("Pawns: " + str(pieces[0]))
+    print("Knights: " + str(pieces[1]))
+    print("Bishops: " + str(pieces[2]))
+    print("Queens: " + str(pieces[3]))
+    print("Popes: " + str(pieces[4]))
+    print("Rocks: " + str(pieces[5]))
+    print("Kings: " + str(pieces[6]))
+
+def weights(x, y):
     match identifypiece(rowcolumn[x][y]):
         case "nothing":
             return 0
@@ -109,7 +121,7 @@ def weight(x, y):
             return 3
         case "queen":
             return 7
-        case "THE POPE":
+        case "pope":
             return 9
         case "Rock":
             return 0
@@ -688,7 +700,7 @@ def popemove(loc1a, loc1b, loc2a, loc2b):
                     if (loc2b - (loc1a - 5)) == loc1b:
                         move()
                         break
-        print("His Majesty, THE POPE, can't move there!")
+        print("His Majesty, The Pope, can't move there!")
 
 # Defines the conditions for bishop moves
 def bishopmove(loc1a, loc1b, loc2a, loc2b):
@@ -933,8 +945,10 @@ while True:
     if loc1 == "Game Review":
         for i in range(len(rowcolumn)):
             for j in range(len(rowcolumn[i])):
-                weight += weight(i, j)
+                weight += weights(i, j)
                 pieces[count(i, j)] += 1
+        print(weight)
+        printpieces()
 
     if (int(loc1[0])) > 9 or (int(loc1[0])) < 1 or (int(loc1[1])) < 1 or len(rowcolumn[(int(loc1[0])-1)]) < (int(loc1[1])-1):
         print("The coordinate " + str(loc1) + " is off the board!")
@@ -961,7 +975,7 @@ while True:
             kingmove(int(loc1[0]), int(loc1[1]), int(loc2[0]), int(loc2[1]))
         elif identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "queen":
             queenmove(int(loc1[0]), int(loc1[1]), int(loc2[0]), int(loc2[1]))
-        elif identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "THE POPE":
+        elif identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "pope":
             popemove(int(loc1[0]), int(loc1[1]), int(loc2[0]), int(loc2[1]))
         elif identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) == "bishop":
             bishopmove(int(loc1[0]), int(loc1[1]), int(loc2[0]), int(loc2[1]))
