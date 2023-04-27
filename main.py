@@ -113,6 +113,13 @@ def printpieces():
     print("Rocks: " + str(pieces[5]))
     print("Kings: " + str(pieces[6]))
 
+# Reset the count of the number of pieces
+
+def zeropieces():
+    for u in range(len(pieces)):
+        pieces[u] = 0
+    global weight
+    weight = 0
 # Gets the total weight of all the pieces
 
 def weights(x, y):
@@ -940,6 +947,7 @@ while True:
                 pieces[pieceidentify] = pieces[pieceidentify] + 1
         print("Total weight: " + str(weight))
         printpieces()
+        zeropieces()
     else:
         loc1 = loc1.split(",")
 
