@@ -79,7 +79,7 @@ def move():
         print("The " + identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) + " at " + str(loc1) + " captured the " + identifypiece(rowcolumn[(int(loc2[0])-1)][(int(loc2[1])-1)]) + " at " + str(loc2))
         capture()
 
-
+# Counts how many of each type of piece there are
 
 def count(x, y):
     match identifypiece(rowcolumn[x][y]):
@@ -99,7 +99,9 @@ def count(x, y):
             return 0
         case "King":
             return 5
-        
+
+# Prints the number of each piece there is
+
 def printpieces():
     print("Pawns: " + str(pieces[0]))
     print("Knights: " + str(pieces[1]))
@@ -108,6 +110,8 @@ def printpieces():
     print("Popes: " + str(pieces[4]))
     print("Rocks: " + str(pieces[5]))
     print("Kings: " + str(pieces[6]))
+
+# Gets the total weight of all the pieces
 
 def weights(x, y):
     match identifypiece(rowcolumn[x][y]):
