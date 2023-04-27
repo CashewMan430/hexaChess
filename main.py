@@ -194,58 +194,41 @@ def kingmove(loc1a, loc1b, loc2a, loc2b):
                 if int(loc1b) - (int(loc2b)) == -1 or int(loc1b) - (int(loc2b)) == 0:
                     move()
                     break
-                else:
-                    print("The king can't move there!")
             if int(loc1a) - int(loc2a) == 0:
                 if int(loc1b) - (int(loc2b)) == -1 or int(loc1b) - (int(loc2b)) == 1:
                     move()
                     break
-                else:
-                    print("The king can't move there!")
             if int(loc1a) - int(loc2a) == 1:
                 if int(loc1b) - (int(loc2b)) == 0 or int(loc1b) - (int(loc2b)) == 1:
                     move()
                     break
-                else:
-                    print("The king can't move there!")
         elif loc1a > 5:
             if int(loc1a) - int(loc2a) == -1:
                 if int(loc1b) - (int(loc2b)) == -1 or int(loc1b) - (int(loc2b)) == 0:
                     move()
                     break
-                else:
-                    print("The king can't move there!")
             if int(loc1a) - int(loc2a) == 0:
                 if int(loc1b) - (int(loc2b)) == -1 or int(loc1b) - (int(loc2b)) == 1:
                     move()
                     break
-                else:
-                    print("The king can't move there!")
             if int(loc1a) - int(loc2a) == 1:
                 if int(loc1b) - (int(loc2b)) == -1 or int(loc1b) - (int(loc2b)) == 0:
                     move()
                     break
-                else:
-                    print("The king can't move there!")
         else:
             if int(loc1a) - int(loc2a) == -1:
                 if int(loc1b) - (int(loc2b)) == 0 or int(loc1b) - (int(loc2b)) == 1:
                     move()
                     break
-                else:
-                    print("The king can't move there!")
             if int(loc1a) - int(loc2a) == 0:
                 if int(loc1b) - (int(loc2b)) == -1 or int(loc1b) - (int(loc2b)) == 1:
                     move()
                     break
-                else:
-                    print("The king can't move there!")
             if int(loc1a) - int(loc2a) == 1:
                 if int(loc1b) - (int(loc2b)) == -1 or int(loc1b) - (int(loc2b)) == 0:
                     move()
                     break
-                else:
-                    print("The king can't move there!")
+        print("The king can't move there!")
                 
 # Defines the conditions for queen moves
 
