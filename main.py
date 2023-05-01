@@ -84,22 +84,22 @@ def move():
 # Counts how many of each type of piece there are
 
 def count(x, y):
-    match identifypiece(rowcolumn[x][y]):
-        case "nothing":
+    tempvar = identifypiece(rowcolumn[x][y])
+        if tempvar == "nothing":
             return 7
-        case "white pawn":
+        if tempvar == "white pawn":
             return 0
-        case "knight":
+        if tempvar == "knight":
             return 1
-        case "bishop":
+        if tempvar == "bishop":
             return 2
-        case "queen":
+        if tempvar == "queen":
             return 3
-        case "pope":
+        if tempvar == "pope":
             return 4
-        case "Rock":
+        if tempvar == "Rock":
             return 5
-        case "king":
+        if tempvar == "king":
             return 6
 
 # Prints the number of each piece there is
@@ -123,22 +123,22 @@ def zeropieces():
 # Gets the total weight of all the pieces
 
 def weights(x, y):
-    match identifypiece(rowcolumn[x][y]):
-        case "nothing":
+    tempvar = identifypiece(rowcolumn[x][y])
+        if tempvar == "nothing":
             return 0
-        case "white pawn":
+        if tempvar == "white pawn":
             return 1
-        case "knight":
+        if tempvar == "knight":
             return 3
-        case "bishop":
+        if tempvar == "bishop":
             return 3
-        case "queen":
+        if tempvar == "queen":
             return 7
-        case "pope":
+        if tempvar == "pope":
             return 9
-        case "Rock":
+        if tempvar == "Rock":
             return 0
-        case "king":
+        if tempvar == "king":
             return 5
         
 # Prints out the game review
