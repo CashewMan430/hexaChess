@@ -143,7 +143,7 @@ def weights(x, y):
         
 # Prints out the game review
 
-def gamereview():
+def gamereview(piececount):
     global weight
     global pieceidentify
     global pieces
@@ -153,7 +153,8 @@ def gamereview():
             pieceidentify = count(i,j)
             pieces[pieceidentify] = pieces[pieceidentify] + 1
     print("Total weight: " + str(weight))
-    printpieces()
+    if piececount == "y":
+        printpieces()
     zeropieces()
 # Defines the conditions for knight moves
 
@@ -953,12 +954,11 @@ while True:
     loc1 = str(input("What original location? "))
     if loc1 == "Print Board":
         printboard()
-    elif loc1 == "print board":
-        printboard()
     elif loc1 == "Game Review":
-        gamereview()
-    elif loc1 == "game review":
-        gamereview()
+        if input("Do you want to include piece count? y/n ") == "y":
+            gamereview("y")
+        else:
+            gamereview("n")
     else:
         loc1 = loc1.split(",")
 
