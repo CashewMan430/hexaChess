@@ -141,6 +141,8 @@ def weights(x, y):
         case "king":
             return 5
         
+# Prints out the game review
+
 def gamereview():
     global weight
     global pieceidentify
