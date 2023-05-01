@@ -953,7 +953,11 @@ while True:
     loc1 = str(input("What original location? "))
     if loc1 == "Print Board":
         printboard()
+    elif loc1 == "print board":
+        printboard()
     elif loc1 == "Game Review":
+        gamereview()
+    elif loc1 == "game review":
         gamereview()
     else:
         loc1 = loc1.split(",")
