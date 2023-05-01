@@ -141,6 +141,18 @@ def weights(x, y):
         case "king":
             return 5
         
+def gamereview():
+    global weight
+    global pieceidentify
+    global pieces
+    for i in range(len(rowcolumn)):
+        for j in range(len(rowcolumn[i])):
+            weight = weight + weights(i, j)
+            pieceidentify = count(i,j)
+            pieces[pieceidentify] = pieces[pieceidentify] + 1
+    print("Total weight: " + str(weight))
+    printpieces()
+    zeropieces()
 # Defines the conditions for knight moves
 
 def knightmove(loc1a, loc1b, loc2a, loc2b):
@@ -940,14 +952,7 @@ while True:
     if loc1 == "Print Board":
         printboard()
     elif loc1 == "Game Review":
-        for i in range(len(rowcolumn)):
-            for j in range(len(rowcolumn[i])):
-                weight = weight + weights(i, j)
-                pieceidentify = count(i,j)
-                pieces[pieceidentify] = pieces[pieceidentify] + 1
-        print("Total weight: " + str(weight))
-        printpieces()
-        zeropieces()
+        gamereview()
     else:
         loc1 = loc1.split(",")
 
