@@ -959,10 +959,6 @@ while True:
             printboard()
         
         else:
-            if (identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) != "camel1") and (identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) != "camel2"):
-                print("There is a " + identifypiece(rowcolumn[(int(loc1[0])-1)][(int(loc1[1])-1)]) + " there.")
-            else:
-                print("There is a camel there.")
             loc2 = str(input("What new location? "))
             loc2 = loc2.split(",")
             
